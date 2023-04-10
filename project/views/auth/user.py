@@ -13,10 +13,7 @@ class UsersView(Resource):
     @api.marshal_with(user, as_list=True, code=200, description='OK')
     @auth_required
     def get(self):
-        """
-        Get user(token).
-        :return: token
-        """
+
         data = request.headers['Authorization']
         token = data.split('Bearer ')[-1]
         return user_service.get_from_token(token)

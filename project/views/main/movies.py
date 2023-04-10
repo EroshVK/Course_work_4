@@ -17,7 +17,7 @@ class GenresView(Resource):
         Get all genres.
         """
         status = request.args.get('status')
-        return movie_service.get_all(status=status, **page_parser.parse_args())
+        return movie_service.get_all_by_filter(**page_parser.parse_args(), **status_page_parser.parse_args())
 
 
 @movies_ns.route('/<int:genre_id>/')
